@@ -3,6 +3,20 @@ package com.sis.db;
 import java.sql.*;
 import java.util.*;
 
+/*
+ * 	Java에서 집중해서 봐야할 문법
+ * 
+ *  1. 메소드
+ *  2. 제어문
+ *  3. 클래스 => 변수 / 메소드 / 생성자
+ *  4. 캡슐화
+ *  5. 추상 클래스 / **인터페이스
+ *  6. 예외처리
+ *  ------------------------------------
+ *  7. 라이브러리
+ *  	-> String / Collection(List,Map)
+ *  	-> IO
+ */
 public class EmpMain { 
  
 	public static void main(String[] args) throws Exception{
