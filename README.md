@@ -150,3 +150,92 @@
      - endsWith ===> %검색어
        
 </details>
+
+<details>
+<summary>SQL_ORDER BY</summary>
+  
+## 2026-04-15
+   + ORDER BY 사용 형식
+     - SELECT ~ FROM table_name ORDER BY 컬럼 ASC|DESC
+     - 컬럼은 컬럼명,컬럼의 위치번호 (1번부터 시작),함수가 올 수 있다
+   + 이중정렬 -> 대댓글
+     - ORDER BY sal,ename -> sal 먼저 정렬후 sal이 같은 값을 가지고 있는 데이터끼리만 ename정렬 
+     
+</details>
+
+</details>
+
+<details>
+<summary>집계함수</summary>
+  
+## 2026-04-15
+   + 집계함수
+     - 내장 함수: 오라클 라이브러리 -> 이미 만들어져 있는 함수
+     - 단일행 함수: ROW 단위
+     - 집합(집계)함수: COLUMN단위
+   + 집계함수 특징
+     - 단일함수, 컬럼을 사용할 수 없다
+     - 컬럼사용시에는 반드시 GROUP BY가 존재
+   + 집계함수 종류
+     - SUM: column의 총합 -> 장바구니 / 구매금액
+     - AVG: column의 평균 -> 전체 구매자의 평균 금액 / 통계 , 관리자체이지에서 많이 등장
+     - MIN: column 최소값
+     - MAX: column의 최대값 -> 자동 증가번호(중복이 없이)
+     - COUNT: column의 갯수-> 로그인 / ID 중복체크 / 검색결과
+     - RANK(): 순위 출력  1등 2등 2등 4등 -> RANK()
+     - DENSE_RANK(): 순위 출력 1등 2등 2등 3등 -> DENSE_RANK()
+    + 기타
+     - 코딩 순서: SELECT - FROM - WHERE - GROUP BY - HAVING - ORDER BY
+     - 실행 순서: FROM - WHERE - GROUP BY - HAVING - SELECT - ORDER BY
+       
+</details>
+
+<details>
+<summary>단일행 함수</summary>
+  
+## 2026-04-15
+   + 단일행 함수 종류
+     - 문자함수
+       - LENGTH / LENGTHB -> 문자열의 갯수 / 문자의 바이트 수
+         - LENGTH('ABC')  ===> 3
+         - LENGTH('홍길동')   ==> 3
+         - LENGTHB('ABC')  ===> 3
+         - LENGTHB('홍길동')   ==> 9 한글은 한글자당 3byte         
+       - LPAD / ***RPAD
+         - LPAD(문자열,글자수,'변경할 문자')
+         - LPAD('KING',5,#) -> #KING -> 남으면 #을 붙힌다
+         - RPAD(문자열,글자수,'변경할 문자')
+       - UPPER / LOWER/ INTCAP
+         - UPPER('문자열') -> 대문자로 출력
+         - LOWER('문자열') -> 소문자로 출력
+         - INTCAP('문자열') -> 첫자만 대문자
+       - ****REPLACE: 변경 (크롤링시 &가 들어오면 변경해줄때 주로 사용)
+         - REPLACE(문자열,찾는 문자, 변경할 문자)
+         - REPLACE('Hello Java','a','b') -> Hello jbjb
+       - TRIM: 공백 / 특정 문자 제거 (자바는 공백만 제거)
+         - LTRIM('문자열'), LTRIM('문자열','제거할 문자')
+         - RTRIM('문자열'), RTRIM('문자열','제거할 문자')
+         - TRIM: 좌우 공백 제거
+       - *****SUBSTR / **INSTR / CONCAT
+         - SUBSTR: 문자열 자르기
+         - SUBSTR(문자열,시작위치,갯수) -> 문자번호는 1부터 시작
+         - INSTR(문자열,찾을문자,시작위치,몇번째) -> 위치를 리턴
+         - CONCAT: 문자열 결합 => ||
+         - CONCAT('Hello ','Oracle') -> Hello Oracle
+       - 중요 함수
+         - ***LENGTH: 문자의 갯수
+			   - ***SUBSTR: 문자 자르기
+			   - ***INSTR: 문자 번호 검색
+			   - ***RPAD: 문자 채우기
+			   - ***REPLACE: 문자 변경
+     - 숫자 함수
+       - MOD: %로 나누고 나머지 값
+       - CEIL: 올림함수
+       - TRUNC: 버림함수
+       - ROUND: 반올림
+     - 날자 함수
+       - SYSDATE: 시스템의 날짜 / 시간 => 숫자형으로 되어있다
+         - 어제: SYSDATE -1 / 내일: SYSYDATE + 1
+         - 등록일 자동처리시 사용
+           
+</details>
