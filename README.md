@@ -84,7 +84,7 @@
 </details>
 
 <details>
-<summary>SQL_SELECT</summary>
+<summary>SQL_SELECT_1</summary>
   
 ## 2026-04-13
    + SELECT 문장
@@ -106,4 +106,47 @@
      - &는 Scanner 역할을 한다
      - 띄어쓰기에 주의 해야한다 (FROMtable_name [x] FROM table_name [o])
      
+</details>
+
+<details>
+<summary>SQL_SELECT_2</summary>
+  
+## 2026-04-14
+   + SELECT 사용법
+     - 전체 데이터를 읽기 ========> *
+     - 출력에 필요한 내용만 읽기 ====> column_list
+     - 중복이 없이 출력 ====> DISTINCT
+     - 별칭 => Mybatis (함수)  ====> 컬럼 "", 컬럼 as 별칭
+     - 문자열 결합 =====> ||
+     - 가급적이면 전체 검색은 사용하지 않는다
+   + WHERE 사용
+     - 조건검색 => 가장 많이 사용되는 키워드
+     - 연산자를 사용
+   + 산술연산자(+, -, *, /)
+     - +: 순수하게 덧셈만 가능
+     - /:  0으로 나누면 오류발생, 정수 / 정수 = 실수 ex) 5/2=2.5
+   + 비교연산자 -> true / false => WHERE절 뒤에 (조건)
+     -  =: 같다
+     -  !=: 같지 않다, <>(권장), ^=
+     -  <: 작다
+     -  >: 크다
+     -  <=: 작거나 같다
+     -  >=: 크거나 같다
+     - ** 숫자(정수,실수), 문자열, 날짜 비교 가능
+   + 논리연산자 -> true / false => WHERE절 뒤에 (조건)
+     -  AND: &&를 사용하면 안된다 (&는 입력값을 받는 경우에 사용), AND는 포함된경우
+     -  OR: ||는 문자열 결합시 사용, OR는 미포함인 경우
+     -  NOT: ! NOT IN / NOT BETWEEN / NOT LIKE
+   + BETWEEN ~ AND ->  true / false (속도가 느려 권장하지않는다)
+     - AND를 대체하는 연산자
+     -  WHERE 컬럼 BETWEEN 값1 AND 값2  ==   컬럼 >= 값1 AND 컬럼 <= 값2
+   + IN -> OR 여러개를 대체 (OR가 여러개면 IN연산자가 속도가 빨라 권장)
+   + IS NULL, IS NOT NULL -> (Mysql은 ifnull)
+   + LIKE => SELECT 문장의 핵심은 검색 (자바의 contains)
+     - % : 문자 갯수를 알 수 없을 때
+     - _ : 문자 한글자
+     - contains ===> %검색어%
+     - startWith ===> 검색어%
+     - endsWith ===> %검색어
+       
 </details>
