@@ -237,5 +237,140 @@
        - SYSDATE: 시스템의 날짜 / 시간 => 숫자형으로 되어있다
          - 어제: SYSDATE -1 / 내일: SYSYDATE + 1
          - 등록일 자동처리시 사용
+       - MONTH_BETWEEN(현재,과거)
+         - 총 개월
+     - 변환 함수
+       - TO_CHAR: 숫자나 날짜를 문자열로 변환
+         - 숫자 콤마 찍기 TO_CHAR(111,'9.999')
+         - 년도 YY / YYYY, 월 MM, 일 DD, 시 HH / HH24, 분 MI, 초 SS, 요일 DAY
+       - TO_NUMBER: 문자를 숫자로 변환
+         - SELECT '10'+1 => 11로 자동변환되지만 TO_NUMBER로 변환하는게 성능에 더 좋다
+       - TO_DATE: 문자를 날짜형으로 변환
+         - 생년월일 입력, 예약 날짜 => 문자열로 되어있어 날짜형으로 변환 필요
+     - 기타 함수
+       - NVL: NULL값이 있는 경우 다른 값으로 변경
+       - CASE: 다중 조건문
+         - CASE WHEN 조건 THEN 값 ... ELSE 값 END as 별칭
            
+</details>
+
+<details>
+<summary>JOIN</summary>
+  
+## 2026-04-16
+   + 조인
+     - 테이블을 연결해서 필요한 데이터를 추출하는 과정
+     - JOIN은 SELECT에서만 사용이 가능
+     - 조인 종류
+       - 오라클 조인 (오라클에서만 사용)/ ANSI 조인 (데이터베이스 표준)
+       - INNER JOIN: 교집합 -> 가장 많이 사용되는 조인
+         - EQUE_JOIN
+         - NON_EQUE_JOIN => 범위
+       - OUTER JOIN: NULL값처리 가능 (INNER JOIN을 보완, Admin에서 주로 사용)
+         - LEFT OUTER JOIN => FROM table1,table2 (왼쪽에서 처리가 안된 데이터 읽기)
+         - RIGTH OUTER JOIN => FROM table1,table2 (오른쪽에서 처리가 안된 데이터 읽기)
+         - FULL OUTER JOIN => 양쪽에 있는 모든 데이터 읽기
+   + 조인 형식
+       - INNER JOIN
+         - 오라클 조인: SELECT A.col1, b.col1 FROM A,B WHERE A.col = B.col;
+         - ANSI JOIN: SELECT A.col,B.col FROM A JOIN B ON A.col = B.col;
+         - 두개 이상의 테이블에서 공통으로 존재하는 값을 이용해서 데이터만 조회
+         - 가장 많이 사용되는 JOIN으로 조건이 맞는 경우 => row전체 데이터 추출이 가능 (행을 반환)
+      - OUTER JOIN
+        - 한쪽 테이블 기준으로 모든 데이터를 출력 => null인 경우에는 출력이 안되는 문제를 해결
+        - LEFT OUTER JOIN -> INTERSECT + MINUS A-B
+        - RIGTH OUTER JOIN -> INTERSECT + MINUS B-A
+        - FULL OUTER JOIN (거의 쓰지 않는다) -> UNION ALL
+        - 오라클 LEFT OUTER JOIN: SELECT A.col, B.col FROM A, B WHERE A.col = B.col(+)
+        - ANSI LEFT OUTER JOIN: SELECT B.col, A.col FROM A LEFT_OUTRT JOIN B ON A.col = B.col
+        - 오라클 LEFT OUTER JOIN: SELECT A.col, B.col FROM A, B WHERE A.col(+) = B.col
+        - ANSI LEFT OUTER JOIN: SELECT B.col, A.col FROM A RIGHT_OUTRT JOIN B ON A.col = B.col
+    + 조인 주의점
+      - 테이블 두개 필요한 데이터 추출 (조인)
+      - 컬럼명이 동일 또는 같은 값을 가지고 있는 경우
+      - 컬럼명이 동일시에는 반드시 테이블.컬럼 / 별칭.컬럼 -> 없으면 애매한 정의 에러가 뜬다
+
+</details>
+
+<details>
+<summary>서브쿼리</summary>
+  
+## 2026-04-16
+   + 서브쿼리 
+     - SQL문장 여러개 연결
+     - 웹 개발자가 많이 사용하는 문장으로 네트워크 통신 시 전송 한번, 수신 한번 하는게 좋기때문에	
+     - DML 전체에서 사용이 가능 (INSERT,UPDATE,DELETE)
+   + 서브쿼리 종류 
+     -  WHERE 뒤에 일반 서브쿼리 => 조건문 대신
+     -  SELECT 뒤에 스칼라 서브쿼리 *** (JOIN 대체) => 컬럼 대신
+     -  FROM 뒤에 인라인 뷰 *** => 테이블 대신	
+   + 단일행 서브쿼리
+     - 비교 연산자 주로 사용( =, <>, <, >, <=, >=)
+     - 기준값 한개를 주로 비교할 때 사용 (서브쿼리 결과가 1개인 경우)
+   + 다중행 서브쿼리
+     - 결과값이 여러개인 경우
+     - IN, ANY, ALL, MAX, MIN
+     - 집합 데이터 처리
+   + 다중컬럼 서브쿼리
+     - 복합조건 (많이 사용되지는 않는다)
+   + EXISTS
+     - IN은 값 비교, XISTS는 존재여부만 파악 (성능을 최적화) -> 조건이 만족이 되면 TRUE -> 다음 문장을 수행하지 않는다
+     - SELECT * FROM emp e WHERE EXISTS(SELECT 1 FROM emp WHERE deptno = 10);
+
+</details>
+
+<details>
+<summary>데이터 정의어_DDL</summary>
+  
+## 2026-04-17
+   + CREATE: 생성
+     - TABLE : 데이터를 저장하는 공간
+     - SEQUENCE : 자동 증가 번호(게시판의 번호)
+     - VIEW : 가상 테이블 -> SELECT 저장
+     - INDEX : 검색 최적화, 빠른 정렬
+     - FUCTION / PROCEDURE / TRIGGER
+   + 테이블 만드는 방법 => 식별자와 동일
+     - 1) 문자로 시작
+       2) table명, column명
+       3) 같은 데이터베이스에서는 테이블 명이 유일해야한다
+       4) 키워드는 사용 불가능
+       5) 숫자는 사용이 가능하지만 앞에 사용 금지
+       6) 특수문자 사용 가능(_ , $)
+   + 제약조건
+     - NOT NULL => 컬럼 데이터형 CONSTRAINT 제약조건명 NOT NULL
+     - UNIQUE => CONSTRAINT 제약조건명 UNIQUE(컬럼명)
+     - CHECK => CONSTRAINT 제약조건명 CHECK(컬럼명 IN(...))
+     - PRIMARY KEY => CONSTRAINT 제약조건명 PRIMARY KEY(컬럼명)
+     - FOREIGN KEY => CONSTRAINT 제약조건명 FOREIGN KEY(컬럼명) REFERENCES 참조테이블(참조컬럼)
+     - DEFAULT => 컬럼 데이터형 DEFAULT 값
+   + ALTER: 추가 / 수정 / 삭제
+     - ADD / MODIFY / DROP
+   + DROP: 전체삭제
+   + RENAME: 테이블 이름 변경
+   + TRUNCATE: 데이터 잘라내기 => 테이블은 유지
+
+</details>
+
+<details>
+<summary>데이터 조작어_DML</summary>
+  
+## 2026-04-17
+   + INSERT: 데이터 추가(테이블)
+     - 전체 값 추가
+       - INSERT INTO board VALUES(값,값...) => 문자열과 날짜는 작은따옴표
+       - DEFAULT에 있는 값도 집어넣어줘야해서 의미가 없어진다
+     - 지정된 값 추가
+       - INSERT INTO board(컬럼1,컬럼2,컬럼3) VALUES(값1,값2,값3) -> 앞에 지정된 컬럼 수 만큼 값을 넣어준다
+       - 작성하지않는 컬럼에 DEFAULT값이 있으면 DEFAULT로 들어감
+   + UPDATE: 데이터 수정 
+     - 전체수정
+       - UPDATE table_name SET 컬럼=값, 컬럼=값....
+     - 조건에 맞는 데이터 수정
+       - UPDATE table_name SET 컬럼=값, 컬럼=값.... WHERE 조건
+   + DELETE: 데이터 삭제 
+     - 전체삭제
+       - DELETE FROM table_name
+     - 조건에 맞는 데이터 삭제 
+       - DELETE FROM table_name WHERE 조건
+
 </details>
