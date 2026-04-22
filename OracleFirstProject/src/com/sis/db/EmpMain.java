@@ -27,7 +27,7 @@ public class EmpMain {
 		
 		//1. 드라이버
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String url = "jdbc:oracle:thin:@localhost:1521:XE";
 		
 		//2. 오라클 연결
 		Connection conn = DriverManager.getConnection(url,"hr","happy"); //socket
