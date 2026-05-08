@@ -1,4 +1,4 @@
--- È¸¿ø
+
 drop table buy;
 drop table member;
 
@@ -15,11 +15,11 @@ CREATE TABLE member(
 	isAdmin CHAR(1) DEFAULT 'n',
 	regdate DATE DEFAULT SYSDATE,
 	CONSTRAINT mem_id_pk PRIMARY KEY(id),
-	CONSTRAINT mem_sex_ck CHECK(sex IN('³²ÀÚ','¿©ÀÚ')),
+	CONSTRAINT mem_sex_ck CHECK(sex IN('å·¢ç£Š','å’¯ç£Š')),
 	CONSTRAINT mem_phone_uk UNIQUE(phone)
 );
 
--- Àå¹Ù±¸´Ï & ±¸¸Å
+
 CREATE TABLE buy(
 	no NUMBER,
 	id VARCHAR2(20),
