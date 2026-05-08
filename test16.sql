@@ -1,66 +1,66 @@
---3юЕ ~ 4юЕ
-/*
+--3Л·╔ ~ 4Л·╔
+/* 
      SQL: 
 	DML / DDL / DCL / TCL
 
-	1) ╦М╥и╧╝ / ╧╝╧Щ / ╪Ь╪╜
+	1) К╙┘К═╧К╛╦ / К╛╦К╡∙ / Л┬°Л└°
 	 DML
 	    SELECT * | column
 	    FROM table_name | view_name | (SELECT ~)
 	    [
-		WHERE а╤╟г
+		WHERE Л║╟Й╠╢
 		GROUP BY
 		HAVING
 		ORDER BY
 	    ]
 
-	    INSERT INTO table_name VALUES(╟╙...) -> дц╥Ё ╟╧╪Ж╦╦е╜ ц╓©Н╢ы
-	    INSERT INTO table_name(дц╥Ё...) VALUES(╟╙...) -> дц╥Ё аЖа╓╣х ╟╧╪Ж╦╦е╜
+	    INSERT INTO table_name VALUES(Й╟▓...) -> Л╩╛К÷╪ Й╟╞Л┬≤К╖▄М│╪ Л╠└Л ╢К▀╓
+	    INSERT INTO table_name(Л╩╛К÷╪...) VALUES(Й╟▓...) -> Л╩╛К÷╪ Л╖─Л═∙К░° Й╟╞Л┬≤К╖▄М│╪
 	    
-	    UPDATE table_name SET дц╥Ё = ╟╙, дц╥Ё = ╟╙ ... [WHERE а╤╟г]
+	    UPDATE table_name SET Л╩╛К÷╪ = Й╟▓, Л╩╛К÷╪ = Й╟▓ ... [WHERE Л║╟Й╠╢]
 
-	    DELETE FROM table_name [WHERE а╤╟г]
+	    DELETE FROM table_name [WHERE Л║╟Й╠╢]
 
-	-------------------------------------------------------------------------------------------- юз╧ы©║╪╜ ╩Г©КгоаЖ ╬й╢б╢ы(DDL, DCL, TCL)
+	-------------------------------------------------------------------------------------------- Л·░К╟■Л≈░Л└° Л┌╛Л ╘М∙≤Л╖─ Л∙┼К┼■К▀╓(DDL, DCL, TCL)
 	 DDL
 	    CREATE
-		1) евюл╨М ╩Щ╪╨
+		1) М┘▄Л²╢К╦■ Л┐²Л└╠
 		      CREATE TABLE table_name
 		      (
-				дц╥Ё ╣╔юлем гЭ [а╕╬Юа╤╟г], => DEFAULT, NOT NULL
-				дц╥Ё ╣╔юлем гЭ [а╕╬Юа╤╟г],
-				дц╥Ё ╣╔юлем гЭ [а╕╬Юа╤╟г],
-				[а╕╬Юа╤╟г] => PK, FK, UK, CK
+				Л╩╛К÷╪ К█╟Л²╢М└╟ М≤∙ [Л═°Л∙╫Л║╟Й╠╢], => DEFAULT, NOT NULL
+				Л╩╛К÷╪ К█╟Л²╢М└╟ М≤∙ [Л═°Л∙╫Л║╟Й╠╢],
+				Л╩╛К÷╪ К█╟Л²╢М└╟ М≤∙ [Л═°Л∙╫Л║╟Й╠╢],
+				[Л═°Л∙╫Л║╟Й╠╢] => PK, FK, UK, CK
 	               )
 	
 		      CREATE TABLE table_name
 		      AS
 			SELECT ~
 
-		2) ╨Д ╩Щ╪╨
+		2) К╥╟ Л┐²Л└╠
 		     CREATE [OR REPLACE] VIEW view_name
 		     AS
 			SELECT ~ 
 
-		3) ╫цдЖ╫╨ ╩Щ╪╨
+		3) Л▀°М──Л┼╓ Л┐²Л└╠
 		      CREATE SEQUENCE seq_name
 			  START WITH 1
 			  INCREMENT BY 1
 			  NOCACHE
 			  NOCYCLE
 
-		4) юн╣╕╫╨ ╩Щ╪╨
-		      CREATE INDEX index_name ON евюл╨М(дц╥Ё╦М)
-		      CREATE INDEX index_name ON евюл╨М(дц╥Ё╦М,дц╥Ё╦М [ASC | DESC])
-		      CREATE INDEX index_name ON евюл╨М(гт╪Ж(дц╥Ё╦М))
+		4) Л²╦К█╠Л┼╓ Л┐²Л└╠
+		      CREATE INDEX index_name ON М┘▄Л²╢К╦■(Л╩╛К÷╪К╙┘)
+		      CREATE INDEX index_name ON М┘▄Л²╢К╦■(Л╩╛К÷╪К╙┘,Л╩╛К÷╪К╙┘ [ASC | DESC])
+		      CREATE INDEX index_name ON М┘▄Л²╢К╦■(М∙╗Л┬≤(Л╩╛К÷╪К╙┘))
 									    NVL(bunji,' ')
 
 	    ALTER
-		=> евюл╨М
-			ALTER TABLE table_name ADD дц╥Ё ╣╔юлемгЭ[а╕╬Юа╤╟г]
-			ALTER TABLE table_name MODIFY дц╥Ё ╣╔юлемгЭ[а╕╬Юа╤╟г]
-			ALTER TABLE table_name DROP COLUMN дц╥Ё╦М
-			ALTER TABLE table_name RENAME COLUMN дц╥Ё╦М TO дц╥Ё╦М
+		=> М┘▄Л²╢К╦■
+			ALTER TABLE table_name ADD Л╩╛К÷╪ К█╟Л²╢М└╟М≤∙[Л═°Л∙╫Л║╟Й╠╢]
+			ALTER TABLE table_name MODIFY Л╩╛К÷╪ К█╟Л²╢М└╟М≤∙[Л═°Л∙╫Л║╟Й╠╢]
+			ALTER TABLE table_name DROP COLUMN Л╩╛К÷╪К╙┘
+			ALTER TABLE table_name RENAME COLUMN Л╩╛К÷╪К╙┘ TO Л╩╛К÷╪К╙┘
 
 	    DROP
 		DROP TABLE table_name
@@ -69,7 +69,7 @@
 		DROP VIEW view_name
 
 	    RENAME
-		=> евюл╨М юл╦╖ ╨╞╟Ф
+		=> М┘▄Л²╢К╦■ Л²╢К╕└ КЁ─Й╡╫
 			RENAME old_name TO new_name
 
 	    TRUNCATE
