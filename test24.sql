@@ -1,9 +1,9 @@
--- 04-30 
+-- 04-30  
 /*
-	°Ë»ö(»ç¿ø °Ë»ö) / Ãß°¡ / »èÁ¦ / ÃâÅğ±Ù / ±Ş¿© °è»ê
-	µµ¼­ => ´ëÃâ
+	ê²€ìƒ‰(ì‚¬ì› ê²€ìƒ‰) / ì¶”ê°€ / ì‚­ì œ / ì¶œí‡´ê·¼ / ê¸‰ì—¬ ê³„ì‚°
+	ë„ì„œ => ëŒ€ì¶œ
 */
---ÃâÅğ±Ù
+--ì¶œí‡´ê·¼
 DROP table attend;
 
 CREATE TABLE attend(
@@ -14,5 +14,5 @@ CREATE TABLE attend(
 	check_out DATE DEFAULT SYSDATE,
 	status VARCHAR2(20),
 	CONSTRAINT att_emp_fk FOREIGN KEY(empno) REFERENCES emp2(empno),
-	CONSTRAINT att_status_ck CHECK(status IN('Á¤»ó','Áö°¢','Á¶Åğ','°á±Ù'))
+	CONSTRAINT att_status_ck CHECK(status IN('ì •ìƒ','ì§€ê°','ì¡°í‡´','ê²°ê·¼'))
 );
