@@ -293,7 +293,7 @@
 </details>
 
 <details>
-<summary>서브쿼리</summary>
+<summary>서브쿼리1</summary>
   
 ## 2026-04-16
    + 서브쿼리 
@@ -376,7 +376,7 @@
 </details>
 
 <details>
-<summary>SubQuery</summary>
+<summary>서브쿼리2</summary>
   
 ## 2026-04-20
    + 서브쿼리
